@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { diffTracePayload, hashTraceBrowser, type ArgusTrace } from "@argus/shared";
-import { compactHash } from "@/lib/format";
+import { compactHash } from "../../lib/format";
 
 export function TamperWorkbench({ traces }: { traces: ArgusTrace[] }) {
   const violation = traces.find((t) => t.policyCheck.verdict === "REJECTED") ?? traces[0]!;

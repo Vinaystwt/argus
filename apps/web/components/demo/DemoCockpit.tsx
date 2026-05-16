@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { DemoReceipt } from "@argus/shared";
-import { compactHash, formatEth, formatUsdc } from "@/lib/format";
+import { compactHash, formatEth, formatUsdc } from "../../lib/format";
 
 const stages = [
   { label: "Why Argus", body: "Agents with financial authority need enforcement outside their prompt window. Soft guardrails can be bypassed. Argus enforces mandate compliance before execution." },
