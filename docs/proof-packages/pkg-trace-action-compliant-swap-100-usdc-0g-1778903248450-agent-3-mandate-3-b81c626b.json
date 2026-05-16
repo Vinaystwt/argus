@@ -1,0 +1,72 @@
+{
+  "packageId": "pkg-trace-action-compliant-swap-100-usdc-0g-1778903248450-agent-3-mandate-3-b81c626b",
+  "traceRoot": "0xb81c626b73f1395c60f75e86c1df2021b64e3b0aba85ff9b8b84db438da42c3b",
+  "generatedAt": "2026-05-16T03:48:22.621Z",
+  "traceId": "trace-action-compliant-swap-100-usdc-0g-1778903248450-agent-3-mandate-3",
+  "agentId": "3",
+  "mandateId": "3",
+  "proof": {
+    "contractAddress": "0xE15DD1452a4d415d07447F0A912BF743F87320f8",
+    "txHash": "0xaa205f208bcf63040571ec474acfb40d05536d340031ebf0d2cfb9e609041a58",
+    "eventName": "ActionApproved",
+    "blockNumber": 33384683,
+    "traceRoot": "0xb81c626b73f1395c60f75e86c1df2021b64e3b0aba85ff9b8b84db438da42c3b",
+    "storageURI": "0g://0x0d33a82d37fce005c7380c8cfb067d7a9eac77b63b88ab38bb76dadcd48fb740",
+    "provider": {
+      "storageProvider": "0g-storage",
+      "chainProvider": "0g-chain",
+      "isLocalFallback": false,
+      "label": "0G Mainnet live",
+      "explorerBaseUrl": "https://chainscan.0g.ai"
+    },
+    "explorerUrl": "https://chainscan.0g.ai/tx/0xaa205f208bcf63040571ec474acfb40d05536d340031ebf0d2cfb9e609041a58",
+    "verificationStatus": "verified"
+  },
+  "attestation": {
+    "provider": "local-dev",
+    "mode": "simulated",
+    "runnerVersion": "argus-runner/0.3.0",
+    "executionEnvironmentHash": "0x9a8b5634d09129a80908cfd2724ad161480ea943b64a8e46191695f11526cf44",
+    "policyEngineHash": "0xd44e2e425e7027b1558fb4e9c83e23a4dbcbeb026b5c9490a6fb66e1dfbbaeec",
+    "note": "Local runner attestation. 0G Compute / TEE remains a roadmap provider."
+  },
+  "segmentHashes": [
+    {
+      "id": "observation",
+      "label": "Observation",
+      "summary": "Treasury drift detected: USDC allocation can be rebalanced through approved liquidity venue.",
+      "hash": "0xe6323708f30ee01a51f6adba7d4837c72e40d0c3c378267080a0e082214982bd"
+    },
+    {
+      "id": "inference",
+      "label": "Inference",
+      "summary": "The action is within size, target, recipient, asset, and action-type limits.",
+      "hash": "0x9d947d791d8123737acab45c538b4f9f082010f7a4bbc016bd66d78f0e99152f"
+    },
+    {
+      "id": "proposal",
+      "label": "Proposed Action",
+      "summary": "Rebalance 100 USDC through an explicitly allowed mock Uniswap target.",
+      "hash": "0x6de5f72dcdf1d58b168294582adf2c3c82b60fc2b50b33fd30f832857e5b9a51"
+    },
+    {
+      "id": "policy",
+      "label": "Policy Verdict",
+      "summary": "APPROVED",
+      "hash": "0xceb2387a9499e7c13205204b49722d388aaebc079ffab45a9f23acdf2f787b76"
+    },
+    {
+      "id": "penalty",
+      "label": "Penalty",
+      "summary": "No penalty",
+      "hash": "0xb1ba20e7b7ebeb83748e7c3f9b98fc10ba069e97670a022303f56a8ea70a3cd6"
+    }
+  ],
+  "verification": {
+    "status": "valid",
+    "computedRoot": "0xb81c626b73f1395c60f75e86c1df2021b64e3b0aba85ff9b8b84db438da42c3b",
+    "committedRoot": "0xb81c626b73f1395c60f75e86c1df2021b64e3b0aba85ff9b8b84db438da42c3b",
+    "diff": [],
+    "checkedAt": "2026-05-16T03:48:22.621Z"
+  }
+}

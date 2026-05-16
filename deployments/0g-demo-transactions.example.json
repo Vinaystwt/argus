@@ -1,0 +1,38 @@
+{
+  "status": "template-not-live",
+  "networkName": "0G Mainnet",
+  "chainId": 16661,
+  "generatedAt": "pending-live-deployment",
+  "transactions": {
+    "createMandate": {
+      "txHash": "pending",
+      "blockNumber": null,
+      "eventNames": ["MandateCreated"],
+      "explorerUrl": "pending"
+    },
+    "registerAgent": {
+      "txHash": "pending",
+      "blockNumber": null,
+      "eventNames": ["AgentRegistered"],
+      "explorerUrl": "pending"
+    },
+    "postBond": {
+      "txHash": "pending",
+      "blockNumber": null,
+      "eventNames": ["BondPosted"],
+      "explorerUrl": "pending"
+    },
+    "compliantAction": {
+      "txHash": "pending",
+      "blockNumber": null,
+      "eventNames": ["ActionApproved", "TraceCommitted", "ComplianceScoreUpdated"],
+      "explorerUrl": "pending"
+    },
+    "maliciousAction": {
+      "txHash": "pending",
+      "blockNumber": null,
+      "eventNames": ["ActionRejected", "AgentSlashed", "TraceCommitted", "ComplianceScoreUpdated"],
+      "explorerUrl": "pending"
+    }
+  }
+}

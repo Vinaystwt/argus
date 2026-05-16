@@ -1,0 +1,27 @@
+{
+  "name": "@argus/agent-runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "demo:local": "tsx src/index.ts demo",
+    "validate:data": "tsx src/validateDemoData.ts",
+    "compliant": "tsx src/index.ts compliant",
+    "malicious": "tsx src/index.ts malicious",
+    "preflight:0g": "tsx src/preflight0g.ts",
+    "deploy:0g": "tsx src/deploy0g.ts",
+    "demo:0g": "tsx src/demo0g.ts"
+  },
+  "dependencies": {
+    "@argus/shared": "workspace:*",
+    "@argus/storage-0g": "workspace:*",
+    "ethers": "^6.13.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.6"
+  }
+}

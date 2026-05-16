@@ -1,0 +1,29 @@
+{
+  "status": "template-not-live",
+  "storageMode": "local-fallback-or-0g-after-live-run",
+  "receipts": [
+    {
+      "label": "compliant-trace",
+      "provider": "pending",
+      "uri": "pending",
+      "root": "pending",
+      "transactionHash": null,
+      "size": null,
+      "uploadedAt": "pending",
+      "explorerUrl": null,
+      "readbackVerified": null
+    },
+    {
+      "label": "violation-trace",
+      "provider": "pending",
+      "uri": "pending",
+      "root": "pending",
+      "transactionHash": null,
+      "size": null,
+      "uploadedAt": "pending",
+      "explorerUrl": null,
+      "readbackVerified": null
+    }
+  ],
+  "safeClaim": "This file is an example template only. Live 0G Storage claims require provider=0g and a real storage URI/root/receipt generated after deployment."
+}

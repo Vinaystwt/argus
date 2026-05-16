@@ -1,0 +1,19 @@
+node_modules/
+.next/
+apps/web/out/
+apps/web/.next/
+dist/
+cache/
+contracts/out/
+contracts/cache/
+*.log
+.env
+.env.local
+.env.*.local
+*.env
+.DS_Store
+*.tsbuildinfo
+
+# Internal tooling
+.claude/
+docs/superpowers/

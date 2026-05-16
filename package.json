@@ -1,0 +1,28 @@
+{
+  "name": "argus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Argus is a cryptographic black box and slashable mandate court for autonomous AI agents.",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "build": "pnpm --filter @argus/shared build && pnpm --filter @argus/storage-0g build && pnpm --filter @argus/agent-runner build && pnpm --filter @argus/web build && pnpm --filter argus-proof-sdk build && pnpm --filter argus-mcp build",
+    "typecheck": "pnpm --filter @argus/shared build && pnpm -r typecheck",
+    "lint": "pnpm --filter @argus/web lint",
+    "test": "forge test -vvv",
+    "demo:local": "pnpm --filter @argus/agent-runner demo:local",
+    "validate:data": "pnpm --filter @argus/agent-runner validate:data",
+    "agent:compliant": "pnpm --filter @argus/agent-runner compliant",
+    "agent:malicious": "pnpm --filter @argus/agent-runner malicious",
+    "contracts:build": "forge build",
+    "contracts:test": "forge test -vvv",
+    "contracts:deploy:local": "forge script contracts/script/DeployLocal.s.sol --rpc-url http://127.0.0.1:8545 --broadcast",
+    "contracts:deploy:0g": "pnpm --filter @argus/agent-runner deploy:0g",
+    "preflight:0g": "pnpm --filter @argus/agent-runner preflight:0g",
+    "demo:0g": "pnpm --filter @argus/agent-runner demo:0g",
+    "test:e2e": "pnpm --filter @argus/web test:e2e"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
+  }
+}
