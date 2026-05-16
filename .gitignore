@@ -17,3 +17,7 @@ contracts/cache/
 # Internal tooling
 .claude/
 docs/superpowers/
+
+# Test artifacts
+apps/web/test-results/
+apps/web/playwright-report/

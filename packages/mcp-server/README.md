@@ -1,6 +1,8 @@
-# argus-mcp
+# argus-mcp (Argus MCP Server)
 
 MCP server for Argus proof verification.
+
+> **Status:** Monorepo-local package included in the Argus repository. Build from source before use.
 
 ## Tools
 
