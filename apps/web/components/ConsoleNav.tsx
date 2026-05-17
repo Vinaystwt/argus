@@ -18,6 +18,7 @@ const groups = [
     links: [
       { label: "Traces", href: "/traces" },
       { label: "Violations", href: "/violations" },
+      { label: "Proof Receipts", href: "/proof/0xb81c626b73f1395c60f75e86c1df2021b64e3b0aba85ff9b8b84db438da42c3b" },
       { label: "Verify", href: "/verify" },
       { label: "Monitor", href: "/monitor" },
     ],

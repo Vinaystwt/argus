@@ -1,0 +1,15 @@
+# Cloudflare Pages _headers
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Cache static assets aggressively
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Don't cache HTML pages
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

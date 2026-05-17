@@ -1,9 +1,8 @@
 import { ConsoleShell } from "@/components/ConsoleShell";
 
-const step1 = `// Monorepo workspace package — not yet on npm
+const step1 = `// Build from source: pnpm --filter @argus/shared build
 import { canonicalize, traceRoot, tracePayloadForHash } from "@argus/shared";
-// Monorepo workspace package — not yet on npm
-import { LocalStorageFallbackAdapter } from "@argus/storage-0g";
+import { ZeroGStorageAdapter } from "@argus/storage-0g";
 
 // Build a structured trace for the agent's proposed action
 const trace: ArgusTrace = {
@@ -31,11 +30,11 @@ const step2 = `// Canonicalise and hash the trace
 const payload = tracePayloadForHash(trace);
 const root = traceRoot(payload); // keccak256 of canonical JSON
 
-// Store in 0G Storage (or local fallback)
-const storage = new LocalStorageFallbackAdapter("./traces");
+// Upload to 0G Storage — returns a receipt with URI and content root
+const storage = new ZeroGStorageAdapter({ rpc: "https://evmrpc.0g.ai", key: process.env.PRIVATE_KEY });
 const receipt = await storage.putJSON(trace.traceId, trace);
 
-// receipt.uri  → "local://traces/agent-executor-7-a1b2c3d4.json"
+// receipt.uri  → "0g://0x0d33a82d..."
 // receipt.root → "0xabcd..." (matches root computed above)`;
 
 const step3 = `import { ActionGate__factory } from "./typechain";
@@ -61,7 +60,7 @@ const receipt = await tx.wait();
 // Emits ActionApproved or ActionRejected
 // ActionRejected includes: reasonBitmap, slashed (wei)`;
 
-const step4 = `// Monorepo workspace package — not yet on npm
+const step4 = `// Build from source: pnpm --filter @argus/shared build
 import { verifyTrace, buildProofPackage } from "@argus/shared";
 
 // Fetch the stored trace from the storage URI
@@ -80,23 +79,23 @@ if (result.status === "valid") {
 // Build exportable proof package for shareable /proof/:root page
 const pkg = buildProofPackage({ trace, proof: proofPanelData });`;
 
-const verifyBrowser = `// Monorepo workspace package — not yet on npm
-// Browser-safe — no Node.js crypto required
+const verifyBrowser = `// Browser-safe — no Node.js crypto required
 import { verifyTraceInBrowser } from "@argus/shared";
 
 const result = await verifyTraceInBrowser(traceJson, committedRoot);`;
 
-const localFallback = `// Monorepo workspace package — not yet on npm
-// Swap local fallback for 0G Storage adapter when ready
-// No other code changes required
-
-// Current: local filesystem
-import { LocalStorageFallbackAdapter } from "@argus/storage-0g";
-const storage = new LocalStorageFallbackAdapter("./traces");
-
-// Planned: ZeroGStorageAdapter (adapter interface defined, 0G integration roadmap)
+const storageExample = `// 0G Storage adapter — uploads trace JSON before submitAction()
 import { ZeroGStorageAdapter } from "@argus/storage-0g";
-const storage = new ZeroGStorageAdapter({ rpc: "https://rpc.0g.ai", key: process.env.KEY });`;
+
+const storage = new ZeroGStorageAdapter({
+  rpc: "https://evmrpc.0g.ai",
+  key: process.env.PRIVATE_KEY,
+  indexer: "https://indexer-storage-turbo.0g.ai"
+});
+
+const receipt = await storage.putJSON(trace.traceId, trace);
+// receipt.uri  → "0g://0x0d33a82d..."
+// receipt.root → bytes32 content hash`;
 
 export default function DeveloperDocsPage() {
   return (
@@ -201,14 +200,14 @@ export default function DeveloperDocsPage() {
         <pre className="code-block" style={{ fontSize: 12, whiteSpace: "pre-wrap" }}>{verifyBrowser}</pre>
       </div>
 
-      {/* Local fallback */}
+      {/* 0G Storage */}
       <div style={{ marginBottom: 40 }}>
-        <h3 className="text-h3" style={{ marginBottom: 12 }}>Local fallback vs. 0G Storage</h3>
+        <h3 className="text-h3" style={{ marginBottom: 12 }}>0G Storage</h3>
         <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.65, maxWidth: 640, marginBottom: 16 }}>
-          The storage adapter interface is stable. Swapping from local fallback to 0G Storage
-          requires only a constructor change. All upstream code — hashing, commitment, verification — is unchanged.
+          Full trace JSON is uploaded to 0G Storage before <code style={{ fontFamily: "var(--font-mono), monospace", fontSize: 12, color: "var(--text)" }}>submitAction()</code> is called.
+          The storage URI is included in the on-chain commitment so any verifier can independently retrieve and replay the trace.
         </p>
-        <pre className="code-block" style={{ fontSize: 12, whiteSpace: "pre-wrap" }}>{localFallback}</pre>
+        <pre className="code-block" style={{ fontSize: 12, whiteSpace: "pre-wrap" }}>{storageExample}</pre>
       </div>
 
       {/* What Argus does not do */}

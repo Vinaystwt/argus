@@ -1,7 +1,7 @@
 {
-  "name": "argus-mcp",
+  "name": "@useargus/mcp",
   "version": "0.1.0",
-  "description": "MCP server for Argus proof verification and contract data",
+  "description": "MCP server for Argus — proof verification, trace hashing, and contract data for autonomous agent accountability",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
@@ -10,10 +10,20 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "start": "node dist/index.js"
   },
+  "keywords": ["argus", "mcp", "0g", "ai-agents", "proof", "mandate"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vinaystwt/argus"
+  },
+  "homepage": "https://useargus.xyz",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "@argus/shared": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "zod": "^3.25.0"
-  },
-  "license": "MIT"
+  }
 }

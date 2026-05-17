@@ -17,7 +17,7 @@ const stages = [
   { label: "Violation sealed", body: "Evidence is sealed by the watcher agent. The violation enters evidence_sealed lifecycle state, ready for the challenge window." },
   { label: "Replay trace", body: "The black-box trace reveals the full decision path: the injected observation, the memory flag, the inference, the proposal, the policy checks, the verdict, and the penalty." },
   { label: "Tamper detection", body: "Edit any field in the committed trace. Recompute the canonical hash. The root diverges from the committed value. The mismatch is proof of tampering." },
-  { label: "Export proof package", body: "The proof package bundles the trace root, proof panel data, segment hashes, attestation metadata, and verification result. Carry it to any judge or explorer." },
+  { label: "Export proof package", body: "The proof package bundles the trace root, proof panel data, segment hashes, attestation metadata, and verification result. Carry it to any verifier or explorer." },
 ] as const;
 
 export function DemoCockpit({ data }: { data: DemoReceipt }) {
@@ -174,7 +174,7 @@ export function DemoCockpit({ data }: { data: DemoReceipt }) {
             {
               k: "Proof package",
               v: isExport ? (pkg?.packageId ?? "pending") : isTamper ? "Mismatch detected" : (pkg?.verification.status ?? "pending"),
-              sub: isTamper ? "Hash diverges after mutation" : `${data.providerStatus?.label ?? "Local fallback"}`,
+              sub: isTamper ? "Hash diverges after mutation" : `${data.providerStatus?.label ?? "0G Mainnet"}`,
             },
           ].map(({ k, v, sub }) => (
             <div key={k} style={{ padding: "14px 18px", background: "var(--surface-1)" }}>

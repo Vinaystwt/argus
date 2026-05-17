@@ -1,26 +1,35 @@
-# argus-proof-sdk
+# @useargus/sdk
 
-Proof verification SDK for Argus — cryptographic mandate enforcement for autonomous AI agents on 0G Mainnet.
+Proof verification SDK and CLI for Argus — mandate enforcement infrastructure for autonomous AI agents on 0G Mainnet.
 
-> **Status:** Monorepo-local package included in the Argus repository. npm publication is planned. To use, clone the repo and import from `packages/sdk/src`.
+> **Status:** Monorepo-local package. Build from source before use. Not yet published to npm.
+> To publish: `npm login` then `npm publish --access public` from `packages/sdk/`.
 
 ## Usage
 
 ```typescript
-import { verifyTrace, ARGUS_CONTRACTS } from "./packages/sdk/src";
+import { verifyTrace, ARGUS_CONTRACTS } from "@useargus/sdk";
 
+// Verify a trace against its committed root
 const result = verifyTrace(traceJson, committedRoot);
 console.log(result.status); // "valid" | "mismatch"
+
+// Get deployed contract addresses
+const contracts = ARGUS_CONTRACTS["0g-mainnet"].contracts;
+console.log(contracts.ActionGate); // 0xE15DD1452a4d415d07447F0A912BF743F87320f8
 ```
 
 ## CLI (from repo root)
 
 ```bash
-pnpm --filter argus-proof-sdk build
-node packages/sdk/dist/cli/index.js contracts --network 0g-mainnet
+pnpm --filter @argus/shared build
+pnpm --filter @useargus/sdk build
+
+node packages/sdk/dist/cli/index.js contracts
 node packages/sdk/dist/cli/index.js verify trace.json --root 0xb81c626b...
 node packages/sdk/dist/cli/index.js inspect proof.json
 node packages/sdk/dist/cli/index.js explain proof.json
+node packages/sdk/dist/cli/index.js hash trace.json
 ```
 
 ## Deployed Contracts (0G Mainnet)

@@ -5,7 +5,7 @@
   "description": "Argus is a cryptographic black box and slashable mandate court for autonomous AI agents.",
   "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "build": "pnpm --filter @argus/shared build && pnpm --filter @argus/storage-0g build && pnpm --filter @argus/agent-runner build && pnpm --filter @argus/web build && pnpm --filter argus-proof-sdk build && pnpm --filter argus-mcp build",
+    "build": "pnpm --filter @argus/shared build && pnpm --filter @argus/storage-0g build && pnpm --filter @argus/agent-runner build && pnpm --filter @argus/web build && pnpm --filter @useargus/sdk build && pnpm --filter @useargus/mcp build",
     "typecheck": "pnpm --filter @argus/shared build && pnpm -r typecheck",
     "lint": "pnpm --filter @argus/web lint",
     "test": "forge test -vvv",

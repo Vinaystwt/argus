@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440">
+  <defs>
+    <marker id="arr-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d4a847"/>
+    </marker>
+    <marker id="arr-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4db87a"/>
+    </marker>
+    <marker id="arr-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d94f5a"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5a8ed4"/>
+    </marker>
+    <marker id="arr-muted" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8a95a5"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="440" fill="#07080a"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#eef1f6">Action Lifecycle</text>
+  <text x="450" y="48" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8a95a5">From proposal to on-chain trace commitment</text>
+
+  <!-- Column headers -->
+  <!-- Col 1: Agent (x center ~112) -->
+  <!-- Col 2: ActionGate (x center ~312) -->
+  <!-- Col 3: 0G Chain (x center ~562) -->
+  <!-- Col 4: 0G Storage (x center ~762) -->
+
+  <rect x="30" y="62" width="164" height="30" rx="4" fill="#141820" stroke="#d4a847" stroke-width="1.5"/>
+  <text x="112" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#d4a847">Agent</text>
+
+  <rect x="214" y="62" width="196" height="30" rx="4" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="312" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#5a8ed4">ActionGate</text>
+
+  <rect x="430" y="62" width="260" height="30" rx="4" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="560" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#5a8ed4">0G Chain</text>
+
+  <rect x="710" y="62" width="160" height="30" rx="4" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="790" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#5a8ed4">0G Storage</text>
+
+  <!-- Swim lane vertical dividers -->
+  <line x1="197" y1="62" x2="197" y2="430" stroke="rgba(229,235,245,0.06)" stroke-width="1"/>
+  <line x1="415" y1="62" x2="415" y2="430" stroke="rgba(229,235,245,0.06)" stroke-width="1"/>
+  <line x1="700" y1="62" x2="700" y2="430" stroke="rgba(229,235,245,0.06)" stroke-width="1"/>
+
+  <!-- ── STEP 1: Agent builds trace & submits ── -->
+  <!-- Step row 1: y ~118 -->
+  <rect x="36" y="104" width="152" height="44" rx="6" fill="#0f1217" stroke="#d4a847" stroke-width="1.2"/>
+  <text x="112" y="122" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="10" fill="#eef1f6">build ArgusTrace</text>
+  <text x="112" y="138" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#8a95a5">hashTrace() → traceRoot</text>
+
+  <!-- Arrow →  ActionGate -->
+  <line x1="188" y1="126" x2="212" y2="126" stroke="#d4a847" stroke-width="1.5" marker-end="url(#arr-amber)"/>
+  <text x="200" y="120" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#d4a847">submit</text>
+
+  <rect x="220" y="104" width="184" height="44" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.2"/>
+  <text x="312" y="122" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="10" fill="#5a8ed4">submitAction()</text>
+  <text x="312" y="138" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#8a95a5">proposal, traceRoot, storageURI</text>
+
+  <!-- ── STEP 2: Policy check ── -->
+  <rect x="220" y="170" width="184" height="64" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.2"/>
+  <text x="312" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">6-Clause Mandate Check</text>
+  <text x="312" y="204" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">1. allowedActions</text>
+  <text x="312" y="216" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">2. forbiddenDomains  3. maxValueTransfer</text>
+  <text x="312" y="228" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">4. requiresApproval  5. expiresAt  6. callbackURI</text>
+
+  <!-- vertical connector from row1 to row2 (ActionGate) -->
+  <line x1="312" y1="148" x2="312" y2="168" stroke="#5a8ed4" stroke-width="1.2" marker-end="url(#arr-blue)"/>
+
+  <!-- ── STEP 3a: APPROVED verdict ── -->
+  <rect x="36" y="264" width="152" height="36" rx="6" fill="#0f1217" stroke="#4db87a" stroke-width="1.5"/>
+  <text x="112" y="282" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#4db87a">APPROVED</text>
+  <text x="112" y="296" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">score += 5</text>
+
+  <!-- Arrow ActionGate → APPROVED -->
+  <line x1="220" y1="282" x2="190" y2="282" stroke="#4db87a" stroke-width="1.5" marker-end="url(#arr-green)"/>
+
+  <!-- ── STEP 3b: REJECTED verdict ── -->
+  <rect x="36" y="316" width="152" height="36" rx="6" fill="#0f1217" stroke="#d94f5a" stroke-width="1.5"/>
+  <text x="112" y="334" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#d94f5a">REJECTED</text>
+  <text x="112" y="348" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">bond slashed</text>
+
+  <!-- Arrow ActionGate → REJECTED -->
+  <line x1="220" y1="334" x2="190" y2="334" stroke="#d94f5a" stroke-width="1.5" marker-end="url(#arr-red)"/>
+
+  <!-- vertical connector from row2 policy to verdicts -->
+  <line x1="220" y1="234" x2="220" y2="282" stroke="#4db87a" stroke-width="1.2"/>
+  <line x1="220" y1="282" x2="220" y2="334" stroke="#d94f5a" stroke-width="1.2"/>
+
+  <!-- ── STEP 4: Trace committed ── -->
+  <rect x="220" y="264" width="184" height="88" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.2"/>
+  <text x="312" y="283" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">TraceCommitment.commit()</text>
+  <text x="312" y="299" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">traceRoot (keccak256)</text>
+  <text x="312" y="311" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">storageURI</text>
+  <text x="312" y="323" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">verdict + agentId</text>
+  <text x="312" y="342" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#d4a847">emit TraceCommitted()</text>
+
+  <!-- vertical connector from verdicts area to TraceCommitment box -->
+  <line x1="312" y1="234" x2="312" y2="262" stroke="#5a8ed4" stroke-width="1.2" marker-end="url(#arr-blue)"/>
+
+  <!-- ── STEP 5: 0G Chain storage ── -->
+  <rect x="430" y="264" width="260" height="88" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.2"/>
+  <text x="560" y="283" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">0G Chain — TraceCommitment contract</text>
+  <text x="560" y="299" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">commitmentId  →  traceRoot</text>
+  <text x="560" y="312" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">storageURI  →  0G pointer</text>
+  <text x="560" y="325" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">verdict  →  APPROVED | REJECTED</text>
+  <text x="560" y="342" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">immutable on-chain record</text>
+
+  <!-- Arrow TraceCommitment → 0G Chain -->
+  <line x1="404" y1="308" x2="428" y2="308" stroke="#5a8ed4" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+
+  <!-- ── STEP 6: 0G Storage ── -->
+  <rect x="710" y="264" width="160" height="88" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.2"/>
+  <text x="790" y="283" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">0G Storage</text>
+  <text x="790" y="299" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">trace.json</text>
+  <text x="790" y="312" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">6 segments</text>
+  <text x="790" y="325" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">canonically ordered</text>
+  <text x="790" y="342" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">decentralized blob</text>
+
+  <!-- Arrow 0G Chain → 0G Storage -->
+  <line x1="690" y1="308" x2="708" y2="308" stroke="#5a8ed4" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+
+  <!-- ── STEP 7: Verifier row ── -->
+  <rect x="36" y="376" width="834" height="44" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="120" y="394" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#8a95a5">OFF-CHAIN VERIFIER:</text>
+  <text x="230" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">fetch trace.json from 0G Storage</text>
+  <text x="420" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">→</text>
+  <text x="435" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">recompute keccak256 root</text>
+  <text x="593" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">→</text>
+  <text x="608" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">diff vs on-chain root</text>
+  <text x="755" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#4db87a">→ VALID</text>
+  <text x="805" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#8a95a5">or</text>
+  <text x="820" y="394" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d94f5a">TAMPERED</text>
+  <!-- arrow down from chain to verifier -->
+  <line x1="560" y1="352" x2="560" y2="374" stroke="#8a95a5" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arr-muted)"/>
+
+  <!-- footer -->
+  <text x="450" y="430" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">0G Mainnet (chain ID 16661)  |  TraceCommitment: 0xdBB3d6e17b34C118BdFd9A73FaECA55C4E814B51  |  ActionGate: 0xE15DD1452a4d415d07447F0A912BF743F87320f8</text>
+</svg>

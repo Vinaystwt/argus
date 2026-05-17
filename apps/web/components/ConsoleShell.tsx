@@ -34,10 +34,21 @@ export function ConsoleShell({
         <div className="sidebar-footer">
           <div className="proof-mode-block">
             <span className="label">Proof mode</span>
-            <span className="value">{data.providerStatus?.label ?? "Local fallback"}</span>
-            <p className="note">
-              Local fallback active. Roots, events, and storage URIs visible for verification.
-            </p>
+            <span className="value">{data.providerStatus?.label ?? "Local"}</span>
+            {data.mode === "0g" ? (
+              <p className="note">
+                Live on 0G Mainnet. Trace roots and storage URIs are committed on-chain.
+              </p>
+            ) : (
+              <p className="note">
+                Local mode. Roots and storage URIs available for local verification.
+              </p>
+            )}
+          </div>
+          <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
+            <a href="https://github.com/Vinaystwt/argus" target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "var(--subtle)" }}>GitHub</a>
+            <a href="https://x.com/VinaySTWT" target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "var(--subtle)" }}>X</a>
+            <a href="/" style={{ fontSize: 11, color: "var(--subtle)" }}>useargus.xyz</a>
           </div>
         </div>
       </aside>

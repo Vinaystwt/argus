@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380">
+  <defs>
+    <marker id="di-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d4a847"/>
+    </marker>
+    <marker id="di-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4db87a"/>
+    </marker>
+    <marker id="di-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d94f5a"/>
+    </marker>
+    <marker id="di-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5a8ed4"/>
+    </marker>
+    <marker id="di-muted" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8a95a5"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="380" fill="#07080a"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#eef1f6">Developer Integration Flow</text>
+  <text x="450" y="48" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8a95a5">Integrating Argus into your autonomous agent</text>
+
+  <!-- ── STEP 1: Your Agent Code ── -->
+  <rect x="30" y="70" width="148" height="80" rx="6" fill="#0f1217" stroke="#d4a847" stroke-width="1.5"/>
+  <text x="104" y="90" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#d4a847">Your Agent</text>
+  <text x="104" y="106" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#8a95a5">// plan your action</text>
+  <text x="104" y="120" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">const trace = {</text>
+  <text x="104" y="134" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">  ...traceFields</text>
+  <text x="104" y="146" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">}</text>
+
+  <!-- Arrow 1 → 2 -->
+  <line x1="178" y1="110" x2="208" y2="110" stroke="#d4a847" stroke-width="1.5" marker-end="url(#di-amber)"/>
+
+  <!-- ── STEP 2: build ArgusTrace ── -->
+  <rect x="210" y="70" width="148" height="80" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="284" y="90" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#eef1f6">Build Trace</text>
+  <text x="284" y="108" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">buildArgusTrace(</text>
+  <text x="284" y="122" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">  agentId,</text>
+  <text x="284" y="136" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">  mandateId,</text>
+  <text x="284" y="148" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#eef1f6">  proposal</text>
+
+  <!-- Arrow 2 → 3 -->
+  <line x1="358" y1="110" x2="388" y2="110" stroke="#d4a847" stroke-width="1.5" marker-end="url(#di-amber)"/>
+
+  <!-- ── STEP 3: hashTrace ── -->
+  <rect x="390" y="70" width="148" height="80" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="464" y="90" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#eef1f6">Hash Trace</text>
+  <text x="464" y="110" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">hashTrace(trace)</text>
+  <text x="464" y="126" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">canonical serialize</text>
+  <text x="464" y="140" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">→ traceRoot</text>
+  <text x="464" y="154" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">bytes32</text>
+
+  <!-- Arrow 3 → 4 -->
+  <line x1="538" y1="110" x2="568" y2="110" stroke="#d4a847" stroke-width="1.5" marker-end="url(#di-amber)"/>
+
+  <!-- ── STEP 4: submitAction ── -->
+  <rect x="570" y="70" width="148" height="80" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="644" y="88" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">ActionGate (on-chain)</text>
+  <text x="644" y="104" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#d4a847">submitAction(</text>
+  <text x="644" y="117" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#eef1f6">  proposal,</text>
+  <text x="644" y="130" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#eef1f6">  traceRoot,</text>
+  <text x="644" y="143" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#eef1f6">  storageURI</text>
+
+  <!-- Arrow 4 → 5 -->
+  <line x1="718" y1="110" x2="748" y2="110" stroke="#d4a847" stroke-width="1.5" marker-end="url(#di-amber)"/>
+
+  <!-- ── STEP 5: proof receipt ── -->
+  <rect x="750" y="70" width="120" height="80" rx="6" fill="#0f1217" stroke="#d4a847" stroke-width="1.2"/>
+  <text x="810" y="90" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#eef1f6">Proof Receipt</text>
+  <text x="810" y="108" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">commitmentId</text>
+  <text x="810" y="121" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">traceRoot</text>
+  <text x="810" y="134" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">storageURI</text>
+  <text x="810" y="147" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#d4a847">verdict</text>
+
+  <!-- Step numbers -->
+  <text x="30" y="68" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">1</text>
+  <text x="210" y="68" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">2</text>
+  <text x="390" y="68" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">3</text>
+  <text x="570" y="68" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">4</text>
+  <text x="750" y="68" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">5</text>
+
+  <!-- ── STEP 6: verifyTrace (optional) ── -->
+  <text x="30" y="186" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8a95a5">Optional: Off-Chain Verification</text>
+
+  <rect x="30" y="196" width="180" height="60" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="120" y="215" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">verifyTrace(</text>
+  <text x="120" y="229" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">  commitmentId,</text>
+  <text x="120" y="243" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">  traceJson</text>
+
+  <line x1="210" y1="226" x2="250" y2="226" stroke="#d4a847" stroke-width="1.5" marker-end="url(#di-amber)"/>
+
+  <rect x="252" y="196" width="180" height="60" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="342" y="215" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">fetch on-chain root</text>
+  <text x="342" y="229" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">TraceCommitment.get(id)</text>
+  <text x="342" y="243" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">recompute keccak256</text>
+
+  <line x1="432" y1="226" x2="472" y2="226" stroke="#d4a847" stroke-width="1.5" marker-end="url(#di-amber)"/>
+
+  <rect x="474" y="196" width="120" height="60" rx="6" fill="#0f1217" stroke="#4db87a" stroke-width="1.5"/>
+  <text x="534" y="215" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#4db87a">VALID</text>
+  <text x="534" y="231" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">roots match</text>
+  <text x="534" y="244" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">trace unmodified</text>
+
+  <text x="604" y="228" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8a95a5">or</text>
+
+  <rect x="622" y="196" width="148" height="60" rx="6" fill="#0f1217" stroke="#d94f5a" stroke-width="1.5"/>
+  <text x="696" y="215" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#d94f5a">TAMPERED</text>
+  <text x="696" y="231" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">root mismatch</text>
+  <text x="696" y="244" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">evidence on-chain</text>
+
+  <!-- ── Code snippet area ── -->
+  <rect x="30" y="280" width="840" height="76" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.06)" stroke-width="1"/>
+  <text x="50" y="298" font-family="'Courier New', Courier, monospace" font-size="9" fill="#8a95a5">// Quick integration example (TypeScript SDK)</text>
+  <text x="50" y="314" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">const trace = buildArgusTrace(agentId, mandateId, proposal, checks, verdict);</text>
+  <text x="50" y="330" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">const traceRoot = hashTrace(trace);                          <tspan fill="#8a95a5">// bytes32 keccak256</tspan></text>
+  <text x="50" y="346" font-family="'Courier New', Courier, monospace" font-size="9" fill="#eef1f6">const storageURI = await upload0GStorage(trace);             <tspan fill="#8a95a5">// 0G blob URI</tspan></text>
+
+  <!-- footer -->
+  <text x="450" y="370" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">ActionGate: 0xE15DD1452a4d415d07447F0A912BF743F87320f8  |  AgentRegistry: 0x1699c6ae317F1f3DECaE37B806c174C4D3CAE26e  |  Chain ID: 16661</text>
+</svg>

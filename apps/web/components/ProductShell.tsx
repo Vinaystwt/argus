@@ -16,7 +16,7 @@ export function ProductShell({ children, title, eyebrow }: { children: ReactNode
         <div className="sidebar-proof">
           <span>Proof mode</span>
           <strong>{data.providerStatus?.label ?? data.mode}</strong>
-          <p>Local fallback is active until 0G deployment. Roots, events, and storage URIs remain visible for verification.</p>
+          <p>{data.mode === "0g" ? "Live on 0G Mainnet. Roots, events, and storage URIs are publicly verifiable." : "Serving demo data. Roots and storage URIs match live 0G deployments."}</p>
         </div>
       </aside>
       <section className="console-main">

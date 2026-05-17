@@ -21,3 +21,6 @@ docs/superpowers/
 # Test artifacts
 apps/web/test-results/
 apps/web/playwright-report/
+
+# Dev trace artifacts
+traces/

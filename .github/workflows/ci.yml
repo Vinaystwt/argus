@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  contracts:
+    name: Contracts (Foundry)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Run forge tests
+        run: forge test -vvv
+
+  web:
+    name: Web (TypeScript + Build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build all packages
+        run: pnpm build
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for common secret patterns
+        run: |
+          echo "Scanning for potential secrets..."
+          # Private key patterns
+          if grep -rn --include="*.ts" --include="*.js" --include="*.json" --include="*.env" \
+            -E "0x[0-9a-fA-F]{64}|PRIVATE_KEY\s*=\s*['\"][^'\"]+['\"]|npm_[A-Za-z0-9]{36}" \
+            --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=dist --exclude-dir=out \
+            --exclude-dir=contracts/lib \
+            . 2>/dev/null | grep -v "example\|\.example\|test\|spec\|__test__\|contracts/test\|0g-demo-transactions\|0g-storage-receipts\|0g\.json\|deployments/" ; then
+            echo "WARNING: Potential secrets found above. Review before merging."
+            # Do not fail on this check — deployment artifacts contain tx hashes which can match patterns
+          fi
+          echo "Scan complete."

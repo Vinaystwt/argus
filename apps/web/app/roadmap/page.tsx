@@ -5,7 +5,6 @@ export const metadata = { title: "Roadmap" };
 
 const statusStyles: Record<string, { cls: string; dot: string }> = {
   live: { cls: "badge-approved", dot: "approved" },
-  "adapter-ready": { cls: "badge-chain", dot: "amber" },
   "in-progress": { cls: "badge-amber", dot: "amber" },
   planned: { cls: "", dot: "" },
   roadmap: { cls: "", dot: "" },
@@ -31,7 +30,6 @@ export default function RoadmapPage() {
 
   const grouped = {
     live: roadmapItems.filter((i) => i.status === "live"),
-    "adapter-ready": roadmapItems.filter((i) => i.status === "adapter-ready"),
     "in-progress": roadmapItems.filter((i) => i.status === "in-progress"),
     planned: roadmapItems.filter((i) => i.status === "planned" || i.status === "roadmap"),
   };
@@ -47,7 +45,6 @@ export default function RoadmapPage() {
       {/* Status key */}
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}>
         <span className="badge badge-approved">Live</span>
-        <span className="badge badge-chain">Adapter-ready</span>
         <span className="badge badge-amber">In progress</span>
         <span className="badge">Planned</span>
       </div>
@@ -57,7 +54,6 @@ export default function RoadmapPage() {
           if (items.length === 0) return null;
           const label =
             status === "live" ? "Live" :
-            status === "adapter-ready" ? "Adapter-ready" :
             status === "in-progress" ? "In progress" :
             "Planned";
           const sty = statusStyles[status] ?? { cls: "", dot: "" };

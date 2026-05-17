@@ -9,14 +9,14 @@ const primitives = [
     tag: "On-chain settlement",
     body: "Mandates, ActionGate verdicts, bond slashing, compliance score changes, and trace-root commitments are public and externally verifiable. Not a private dashboard.",
     color: "var(--chain)",
-    status: "adapter-ready",
+    status: "live",
   },
   {
     title: "0G Storage — Black-Box Recorder",
     tag: "Off-chain evidence",
     body: "Full replayable traces, violation evidence bundles, and proof packages live off-chain with roots committed on-chain. Rich records without bloating chain state.",
     color: "var(--amber)",
-    status: "adapter-ready",
+    status: "live",
   },
   {
     title: "0G Compute / TEE — Sealed Policy",
@@ -55,8 +55,7 @@ export function ZeroGSection() {
         </h2>
         <p style={{ fontSize: 16, color: "var(--muted)", lineHeight: 1.7 }}>
           Argus is designed around 0G infrastructure because agent accountability needs public enforcement,
-          storage-backed evidence, and a future path to sealed execution. The MVP uses local fallback with
-          the same data shapes — the architecture is already 0G-native.
+          storage-backed evidence, and a future path to sealed execution. 0G Chain and 0G Storage are live on mainnet — verdicts and evidence are publicly verifiable today.
         </p>
       </div>
 
@@ -77,8 +76,8 @@ export function ZeroGSection() {
             >
               <div style={{ display: "flex", alignItems: "center", gap: 10, justifyContent: "space-between" }}>
                 <span style={{ fontSize: 15, fontWeight: 650, letterSpacing: "-0.015em" }}>{p.title}</span>
-                <span className={`badge ${p.status === "roadmap" ? "" : "badge-chain"}`} style={{ flexShrink: 0 }}>
-                  {p.status === "roadmap" ? "Roadmap" : "Adapter-ready"}
+                <span className={`badge ${p.status === "roadmap" ? "" : p.status === "live" ? "badge-approved" : "badge-chain"}`} style={{ flexShrink: 0 }}>
+                  {p.status === "roadmap" ? "Roadmap" : "Live"}
                 </span>
               </div>
               <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6 }}>{p.body}</p>

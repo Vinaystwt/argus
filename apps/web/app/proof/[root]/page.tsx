@@ -35,7 +35,7 @@ export default async function ProofPage({ params }: { params: Promise<{ root: st
           Anyone with this root can verify the verdict, evidence, and integrity of this agent action.
         </h1>
         <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.65, maxWidth: 640 }}>
-          This page is designed for judges, operators, and developers who need to verify a specific agent action without trusting a private dashboard.
+          This page is designed for operators, auditors, and developers who need to verify a specific agent action without trusting a private dashboard.
         </p>
       </div>
 

@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500">
+  <defs>
+    <marker id="arrow-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d4a847"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4db87a"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d94f5a"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5a8ed4"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8a95a5"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="500" fill="#07080a"/>
+
+  <!-- Title -->
+  <text x="480" y="36" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#eef1f6">Argus System Architecture</text>
+  <text x="480" y="56" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#8a95a5">Mandate Enforcement Infrastructure for Autonomous AI Agents</text>
+
+  <!-- ── ROW 1: Operator lane ── -->
+  <!-- Operator box -->
+  <rect x="30" y="90" width="110" height="48" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="85" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8a95a5">OPERATOR</text>
+  <text x="85" y="128" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="10" fill="#eef1f6">Operator</text>
+
+  <!-- arrow: Operator → createMandate() -->
+  <line x1="140" y1="114" x2="218" y2="114" stroke="#d4a847" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <text x="179" y="108" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">createMandate()</text>
+
+  <!-- MandateRegistry box -->
+  <rect x="220" y="90" width="140" height="48" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="290" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">ON-CHAIN</text>
+  <text x="290" y="128" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="11" fill="#eef1f6">MandateRegistry</text>
+
+  <!-- ── ROW 2: AgentOwner lane ── -->
+  <!-- AgentOwner box -->
+  <rect x="30" y="162" width="110" height="48" rx="6" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="85" y="182" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8a95a5">OWNER</text>
+  <text x="85" y="200" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="10" fill="#eef1f6">AgentOwner</text>
+
+  <!-- arrow: AgentOwner → postBond() -->
+  <line x1="140" y1="186" x2="338" y2="186" stroke="#d4a847" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <text x="239" y="180" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">postBond()</text>
+
+  <!-- AgentBonding box -->
+  <rect x="340" y="162" width="130" height="48" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="405" y="182" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">ON-CHAIN</text>
+  <text x="405" y="200" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="11" fill="#eef1f6">AgentBonding</text>
+
+  <!-- ── ROW 3: Agent → ActionGate ── -->
+  <!-- Agent box -->
+  <rect x="30" y="234" width="110" height="48" rx="6" fill="#0f1217" stroke="#d4a847" stroke-width="1.5"/>
+  <text x="85" y="254" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#d4a847">AGENT</text>
+  <text x="85" y="272" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="10" fill="#eef1f6">AI Agent</text>
+
+  <!-- arrow: Agent → submitAction() -->
+  <line x1="140" y1="258" x2="458" y2="258" stroke="#d4a847" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <text x="299" y="252" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="9" fill="#d4a847">submitAction(proposal, traceRoot, storageURI)</text>
+
+  <!-- ActionGate box -->
+  <rect x="460" y="234" width="130" height="48" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="525" y="254" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">ON-CHAIN</text>
+  <text x="525" y="272" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="11" fill="#eef1f6">ActionGate</text>
+
+  <!-- 6-clause check label -->
+  <rect x="610" y="240" width="120" height="36" rx="4" fill="#0f1217" stroke="rgba(229,235,245,0.09)" stroke-width="1"/>
+  <text x="670" y="255" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">6-clause mandate</text>
+  <text x="670" y="269" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">check on-chain</text>
+  <line x1="590" y1="258" x2="610" y2="258" stroke="#8a95a5" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-muted)"/>
+
+  <!-- Verdict boxes -->
+  <rect x="750" y="220" width="100" height="36" rx="6" fill="#0f1217" stroke="#4db87a" stroke-width="1.5"/>
+  <text x="800" y="244" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#4db87a">APPROVED</text>
+
+  <rect x="750" y="270" width="100" height="36" rx="6" fill="#0f1217" stroke="#d94f5a" stroke-width="1.5"/>
+  <text x="800" y="294" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#d94f5a">REJECTED</text>
+
+  <!-- Arrow: ActionGate → APPROVED -->
+  <line x1="730" y1="248" x2="748" y2="238" stroke="#4db87a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <!-- Arrow: ActionGate → REJECTED -->
+  <line x1="730" y1="268" x2="748" y2="280" stroke="#d94f5a" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+  <!-- Midpoint line from ActionGate right -->
+  <line x1="590" y1="258" x2="730" y2="258" stroke="#8a95a5" stroke-width="1.5"/>
+  <line x1="730" y1="238" x2="730" y2="280" stroke="#8a95a5" stroke-width="1.5"/>
+
+  <!-- ── APPROVED path ── -->
+  <!-- score +5 label -->
+  <text x="858" y="232" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#4db87a">score +5</text>
+  <!-- Arrow APPROVED → TraceCommitment -->
+  <line x1="850" y1="238" x2="900" y2="238" stroke="#4db87a" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- TraceCommitment approved -->
+  <rect x="870" y="310" width="76" height="36" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.2"/>
+  <text x="908" y="325" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#5a8ed4">TraceCommit</text>
+  <text x="908" y="338" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#eef1f6">approved</text>
+
+  <!-- Arrow APPROVED down to TraceCommitment -->
+  <line x1="908" y1="256" x2="908" y2="308" stroke="#4db87a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <line x1="850" y1="238" x2="908" y2="238" stroke="#4db87a" stroke-width="1.5"/>
+  <line x1="908" y1="238" x2="908" y2="256" stroke="#4db87a" stroke-width="1.5"/>
+
+  <!-- ── REJECTED path ── -->
+  <!-- Arrow REJECTED → slash + violation -->
+  <rect x="870" y="360" width="76" height="36" rx="6" fill="#141820" stroke="#d94f5a" stroke-width="1.2"/>
+  <text x="908" y="374" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#d94f5a">bond slash</text>
+  <text x="908" y="387" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="8" fill="#d94f5a">+ violation</text>
+
+  <line x1="850" y1="288" x2="908" y2="288" stroke="#d94f5a" stroke-width="1.5"/>
+  <line x1="908" y1="288" x2="908" y2="358" stroke="#d94f5a" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+
+  <!-- ── 0G Chain + 0G Storage ── -->
+  <!-- 0G Chain box -->
+  <rect x="30" y="415" width="120" height="48" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="90" y="435" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">0G CHAIN</text>
+  <text x="90" y="453" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="10" fill="#eef1f6">TraceCommitment</text>
+
+  <!-- 0G Storage box -->
+  <rect x="170" y="415" width="120" height="48" rx="6" fill="#141820" stroke="#5a8ed4" stroke-width="1.5"/>
+  <text x="230" y="435" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#5a8ed4">0G STORAGE</text>
+  <text x="230" y="453" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="10" fill="#eef1f6">Trace JSON</text>
+
+  <!-- TraceCommitment approved → 0G Chain -->
+  <line x1="870" y1="328" x2="320" y2="328" stroke="#5a8ed4" stroke-width="1.2"/>
+  <line x1="90" y1="328" x2="90" y2="413" stroke="#5a8ed4" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+  <line x1="320" y1="328" x2="90" y2="328" stroke="#5a8ed4" stroke-width="1.2"/>
+  <!-- → 0G Storage -->
+  <line x1="230" y1="328" x2="230" y2="413" stroke="#5a8ed4" stroke-width="1.2" marker-end="url(#arrow-blue)"/>
+
+  <!-- TraceCommitment rejected → 0G Chain / 0G Storage -->
+  <line x1="870" y1="378" x2="340" y2="378" stroke="#d94f5a" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="340" y1="378" x2="340" y2="395" stroke="#d94f5a" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="340" y1="395" x2="90" y2="395" stroke="#d94f5a" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-red)"/>
+  <line x1="230" y1="395" x2="230" y2="413" stroke="#d94f5a" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Legend -->
+  <rect x="30" y="340" width="320" height="60" rx="4" fill="#0f1217" stroke="rgba(229,235,245,0.06)" stroke-width="1"/>
+  <text x="42" y="356" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#8a95a5">LEGEND</text>
+  <line x1="42" y1="365" x2="62" y2="365" stroke="#d4a847" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+  <text x="66" y="369" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#eef1f6">Tx call</text>
+  <line x1="42" y1="382" x2="62" y2="382" stroke="#4db87a" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="66" y="386" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#eef1f6">Approved path</text>
+  <line x1="130" y1="365" x2="150" y2="365" stroke="#d94f5a" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+  <text x="154" y="369" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#eef1f6">Rejected path</text>
+  <line x1="130" y1="382" x2="150" y2="382" stroke="#5a8ed4" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+  <text x="154" y="386" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#eef1f6">Chain storage</text>
+  <line x1="218" y1="365" x2="238" y2="365" stroke="#8a95a5" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow-muted)"/>
+  <text x="242" y="369" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#eef1f6">Internal check</text>
+
+  <!-- Contract addresses footer -->
+  <text x="30" y="480" font-family="'Courier New', Courier, monospace" font-size="8" fill="#8a95a5">ActionGate: 0xE15DD1452a4d415d07447F0A912BF743F87320f8  |  MandateRegistry: 0xB9F38E0180F62e80Be6ca44cE6202316FCcefEC9  |  Chain ID: 16661</text>
+</svg>

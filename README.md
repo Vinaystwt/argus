@@ -1,6 +1,6 @@
 # Argus
 
-![0G Mainnet](https://img.shields.io/badge/0G%20Mainnet-live-brightgreen) ![Tests](https://img.shields.io/badge/tests-27%2F27%20Foundry%20%7C%2012%2F12%20Playwright-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue)
+[![0G Mainnet](https://img.shields.io/badge/0G%20Mainnet-live-brightgreen)](https://chainscan.0g.ai/address/0xE15DD1452a4d415d07447F0A912BF743F87320f8) [![Tests](https://img.shields.io/badge/tests-27%2F27%20Foundry%20%7C%2012%2F12%20Playwright-brightgreen)](https://github.com/Vinaystwt/argus) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Frontend](https://img.shields.io/badge/frontend-useargus.xyz-amber)](https://useargus.xyz)
 
 **Agent accountability infrastructure: a cryptographic black box, mandate enforcement court, replayable proof system, and slashable trust layer for autonomous AI agents with financial authority.**
 
@@ -39,19 +39,33 @@ The core proof path: **mandate → bonded agent → ActionGate → verdict → t
 
 ## Architecture
 
-| Layer | What it does |
-|---|---|
-| Contracts | Mandate court: `MandateRegistry`, `AgentRegistry`, `AgentBonding`, `TraceCommitment`, `ActionGate` |
-| Shared schemas | Canonical action, verdict, and trace data; SHA-256 trace root hashing |
-| Storage adapter | `packages/storage-0g` — uploads full trace JSON to 0G Storage |
-| Agent runner | `packages/agent-runner` — deterministic compliant and compromised scenarios |
-| Frontend | `apps/web` — proof replay, tamper detection, mandate registry, agent passport, violation inbox |
+![System Architecture](docs/diagrams/system-architecture.svg)
 
-See [`docs/architecture.md`](docs/architecture.md) for the full diagram.
+| Layer | Description |
+|---|---|
+| Contracts | 5 core contracts: `MandateRegistry`, `AgentRegistry`, `AgentBonding`, `TraceCommitment`, `ActionGate` |
+| Trace schema | `ArgusTrace` v1 — 6 deterministic segments, canonical keccak256 root |
+| Storage | `packages/storage-0g` — uploads full trace JSON to 0G Storage |
+| Agent runner | `packages/agent-runner` — compliant and violation scenario runner |
+| Frontend | `apps/web` — proof replay, tamper detection, mandate registry, agent dashboard |
+
+### Action Lifecycle
+
+![Action Lifecycle](docs/diagrams/action-lifecycle.svg)
+
+### Proof Model
+
+![Proof Model](docs/diagrams/proof-model.svg)
+
+### Developer Integration
+
+![Developer Integration](docs/diagrams/developer-integration.svg)
+
+See [`docs/architecture.md`](docs/architecture.md) for full written documentation.
 
 ---
 
-## Judge Quickstart
+## Quickstart
 
 Five steps to verify a live proof in your browser:
 
@@ -117,7 +131,7 @@ Both roots are committed on-chain via `TraceCommitment.commitTraceRoot()` and ar
 
 ## Frontend
 
-The product console is live at [useargus.xyz](https://useargus.xyz) (deployed to Cloudflare Pages).
+The product console is live at [https://useargus.xyz](https://useargus.xyz).
 
 | Surface | URL |
 |---|---|
@@ -128,26 +142,71 @@ The product console is live at [useargus.xyz](https://useargus.xyz) (deployed to
 | Mandate registry | [useargus.xyz/mandates](https://useargus.xyz/mandates) |
 | Violation inbox | [useargus.xyz/violations](https://useargus.xyz/violations) |
 | Verify workbench | [useargus.xyz/verify](https://useargus.xyz/verify) |
-| Developer portal | [useargus.xyz/developer](https://useargus.xyz/developer) |
+| Developer portal | [useargus.xyz/developers](https://useargus.xyz/developers) |
 | Roadmap | [useargus.xyz/roadmap](https://useargus.xyz/roadmap) |
 
 ---
 
-## Developer SDK
+## Packages
 
-`packages/shared` exports canonical trace schemas, SHA-256 trace root hashing, and browser-safe verification helpers. A standalone npm package is in development — see `packages/` for current source.
+| Package | Description | Status |
+|---|---|---|
+| `@useargus/sdk` | Proof verification SDK + CLI | Built; npm publish pending |
+| `@useargus/mcp` | MCP server for AI agent tooling | Built; npm publish pending |
+| `@argus/shared` | Canonical types, schemas, keccak256 hashing | Internal monorepo |
+| `@argus/storage-0g` | 0G Storage upload client | Internal monorepo |
+| `@argus/agent-runner` | Scenario runner for compliant/violation flows | Internal monorepo |
 
----
+### SDK
 
-## CLI
+```typescript
+import { verifyTrace, ARGUS_CONTRACTS } from "@useargus/sdk";
 
-A command-line interface for mandate management, agent registration, trace submission, and proof verification is in development under `packages/`.
+const result = verifyTrace(traceJson, committedRoot);
+console.log(result.status); // "valid" | "mismatch"
 
----
+const contracts = ARGUS_CONTRACTS["0g-mainnet"].contracts;
+// ActionGate: 0xE15DD1452a4d415d07447F0A912BF743F87320f8
+```
 
-## MCP Server
+### CLI
 
-An MCP (Model Context Protocol) server enabling AI assistants to query mandate state, submit actions, and retrieve proof packages is in development under `packages/`.
+```bash
+# Build from source:
+pnpm --filter @argus/shared build && pnpm --filter @useargus/sdk build
+
+node packages/sdk/dist/cli/index.js contracts
+node packages/sdk/dist/cli/index.js verify trace.json --root 0xb81c626b...
+node packages/sdk/dist/cli/index.js inspect proof.json
+node packages/sdk/dist/cli/index.js explain proof.json
+```
+
+### MCP Server
+
+```bash
+pnpm --filter @useargus/mcp build
+node packages/mcp-server/dist/index.js
+```
+
+MCP config:
+
+```json
+{
+  "argus": {
+    "command": "node",
+    "args": ["/path/to/argus/packages/mcp-server/dist/index.js"]
+  }
+}
+```
+
+Tools: `hash_trace`, `verify_trace`, `inspect_proof_package`, `explain_violation`, `get_argus_contracts`, `get_demo_transactions`, `get_storage_receipts`.
+
+To publish `@useargus/sdk` and `@useargus/mcp` to npm after `npm login`:
+
+```bash
+cd packages/sdk && npm publish --access public
+cd packages/mcp-server && npm publish --access public
+```
 
 ---
 
@@ -242,16 +301,6 @@ pnpm --filter @argus/web test:e2e
 
 ---
 
-## Known Limitations
-
-- DeFi targets are mock contracts; production DeFi integrations are roadmap.
-- 0G Compute / TEE attestation is not live; the attestation panel in the frontend is labeled accordingly.
-- `packages/storage-0g` readback verification (fetching and re-hashing from 0G Storage) is roadmap.
-- No production wallet integration is claimed.
-- npm, CLI, and MCP packages are in development and not yet published.
-
----
-
 ## Roadmap
 
 1. 0G Compute / TEE sealed policy checks with verifiable verdicts.
@@ -260,12 +309,6 @@ pnpm --filter @argus/web test:e2e
 4. Production dispute resolution court with watcher incentives.
 5. npm SDK, CLI, and MCP server publication.
 6. 0G Storage readback verification.
-
----
-
-## Demo Video
-
-*(placeholder — recording in progress)*
 
 ---
 

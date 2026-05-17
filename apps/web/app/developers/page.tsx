@@ -6,7 +6,7 @@ const integrationSteps = [
   { n: "02", label: "Register agent", detail: "Agent owner registers via AgentRegistry. Assigned agentId is the NFT token ID — agent passport on-chain." },
   { n: "03", label: "Post bond", detail: "Owner posts ETH bond via AgentBonding. Compliance score initialises at 800. Bond is the collateral for slashing." },
   { n: "04", label: "Build structured trace", detail: "Agent runtime produces an ArgusTrace: observation → memory → inference → proposedAction. All fields deterministic." },
-  { n: "05", label: "Store trace, commit root", detail: "Canonicalise trace, compute root with keccak256, upload to storage (local fallback or 0G Storage), then call submitAction()." },
+  { n: "05", label: "Store trace, commit root", detail: "Canonicalise trace, compute root with keccak256, upload to 0G Storage, then call submitAction() with the storage URI and trace root." },
   { n: "06", label: "ActionGate evaluates", detail: "On-chain: 6 mandate clauses checked against proposal. Bitmap encodes which clauses fail. Zero bitmap = APPROVED." },
   { n: "07", label: "Approved or rejected", detail: "Approved: score +5, trace committed. Rejected: bond slashed, score −200, evidence sealed, violation record created." },
   { n: "08", label: "Verify proof package", detail: "Off-chain or in browser: verifyTrace() recomputes root from stored trace, diffs against committedTraceRoot. Mismatch = tampered." },
@@ -78,8 +78,8 @@ export default function DeveloperPortalPage() {
             <div key={role} className="kv-row" style={{ padding: "14px 16px", gap: 0, flexDirection: "column", alignItems: "flex-start" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
                 <span style={{ fontWeight: 600, fontSize: 13 }}>{role}</span>
-                <span className={`badge ${status === "live" ? "badge-approved" : status === "roadmap" ? "badge-local" : "badge-amber"}`}>
-                  {status === "live" ? "live" : status === "roadmap" ? "roadmap" : "adapter-ready"}
+                <span className={`badge ${status === "live" ? "badge-approved" : "badge-amber"}`}>
+                  {status === "live" ? "live" : "roadmap"}
                 </span>
               </div>
               <span style={{ fontSize: 12, color: "var(--muted)" }}>{detail}</span>
@@ -88,12 +88,13 @@ export default function DeveloperPortalPage() {
         </div>
       </div>
 
-      {/* Workspace packages */}
+      {/* Packages */}
       <div>
-        <span className="eyebrow">Workspace packages</span>
-        <h2 className="text-h2" style={{ marginBottom: 8 }}>Helper libraries (this monorepo)</h2>
+        <span className="eyebrow">Packages</span>
+        <h2 className="text-h2" style={{ marginBottom: 8 }}>SDK, MCP, and shared libraries</h2>
         <p style={{ fontSize: 13, color: "var(--muted)", marginBottom: 16, lineHeight: 1.6 }}>
-          These packages are not yet published to npm. They are workspace helpers used inside this monorepo.
+          <code>@useargus/sdk</code> and <code>@useargus/mcp</code> are built and ready. npm publication is in progress.
+          Clone the repo and build from source to use them today.
         </p>
         <div className="grid-2">
           <div className="panel" style={{ padding: 20 }}>

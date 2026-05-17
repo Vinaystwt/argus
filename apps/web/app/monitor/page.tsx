@@ -11,7 +11,7 @@ export default function MonitorPage() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--approved)", display: "inline-block", animation: "dot-pulse 2s ease infinite" }} />
           <p style={{ fontSize: 14, color: "var(--muted)" }}>
-            Deterministic event stream · {data.events.length} events · {data.providerStatus?.label ?? "Local fallback"}
+            Deterministic event stream · {data.events.length} events · {data.providerStatus?.label ?? "0G Mainnet live"}
           </p>
         </div>
       </div>

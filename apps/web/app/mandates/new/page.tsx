@@ -12,8 +12,7 @@ export default function NewMandatePage() {
       <div className="panel" style={{ padding: "14px 20px", marginBottom: 20 }}>
         <p style={{ fontSize: 14, color: "var(--muted)" }}>
           Select a template to pre-fill mandate clauses, then customize for your treasury policy.
-          Live mandate creation requires 0G Chain deployment.{" "}
-          <span className="badge badge-chain" style={{ verticalAlign: "middle" }}>Adapter-ready</span>
+          Live mandate creation requires a connected wallet and 0G Chain write access.
         </p>
       </div>
 

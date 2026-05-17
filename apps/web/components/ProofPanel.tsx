@@ -21,7 +21,7 @@ export function ZeroGProofPanel({ proof, title = "Chain-of-custody receipt" }: {
       <ProofRow label="Explorer" value={proof.explorerUrl ?? "configured after 0G deployment"} />
       {proof.provider.isLocalFallback ? (
         <p>
-          Local fallback is active. The same receipt shape is used for 0G Chain events and 0G Storage URIs after deployment.
+          Demo data. Receipt shape matches live 0G Chain events and 0G Storage URIs.
         </p>
       ) : null}
     </section>

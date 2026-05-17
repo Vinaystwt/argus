@@ -1,7 +1,7 @@
 {
-  "name": "argus-proof-sdk",
+  "name": "@useargus/sdk",
   "version": "0.1.0",
-  "description": "Proof verification SDK for Argus — cryptographic black box and mandate court for autonomous AI agents",
+  "description": "Proof verification SDK for Argus — mandate enforcement infrastructure for autonomous AI agents on 0G Mainnet",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,8 +19,17 @@
     "postbuild": "chmod +x dist/cli/index.js",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "keywords": ["argus", "0g", "ai-agents", "proof", "mandate", "accountability"],
+  "keywords": ["argus", "0g", "ai-agents", "proof", "mandate", "accountability", "autonomous-agents"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vinaystwt/argus"
+  },
+  "homepage": "https://useargus.xyz",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "dependencies": {
     "@argus/shared": "workspace:*"
   }

@@ -32,7 +32,7 @@ export function LiveProofSample({ data }: { data: DemoReceipt }) {
           { k: "Trace root", v: compactHash(violation.proof.committedTraceRoot, 12), cls: "mono" },
           { k: "Storage", v: normalizeStorageURI(violation.proof.storageURI).replace("local://", ""), cls: "mono" },
           { k: "Clauses violated", v: violation.policyCheck.violationCodes.length.toString(), cls: "" },
-          { k: "Provider", v: data.providerStatus?.label ?? "Local fallback", cls: "" },
+          { k: "Provider", v: data.providerStatus?.label ?? "0G Mainnet", cls: "" },
         ].map(({ k, v, cls }) => (
           <div key={k} style={{ padding: "12px 20px", background: "var(--surface-1)" }}>
             <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--subtle)", marginBottom: 4 }}>{k}</div>

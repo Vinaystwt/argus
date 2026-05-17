@@ -1,0 +1,8 @@
+# Cloudflare Pages _redirects
+# Handles SPA-style routes for the static Next.js export
+
+# www to apex
+https://www.useargus.xyz/* https://useargus.xyz/:splat 301
+
+# Proof receipt shorthand
+/p/:root /proof/:root 301

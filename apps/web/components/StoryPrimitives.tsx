@@ -59,7 +59,7 @@ export function ZeroGPrimitiveMap() {
     ["Black-Box Trace", "0G Storage", "Full traces, evidence bundles, proof packages, and future memory snapshots live off-chain without bloating chain state."],
     ["Sealed Policy Check", "0G Compute / TEE", "Future private mandate checks can protect sensitive strategy while producing verifiable verdicts."],
     ["Agent Passport", "Agent ID / iNFT", "Persistent identity can carry bond status, compliance history, and reputation across applications."],
-    ["Proof Surface", "Explorer + roots", "Judges and developers can inspect tx hashes, storage URIs, trace roots, and verification status."]
+    ["Proof Surface", "Explorer + roots", "Operators and developers can inspect tx hashes, storage URIs, trace roots, and verification status."]
   ];
   return (
     <div className="primitive-map">
